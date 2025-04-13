@@ -35,7 +35,7 @@ export function calculateCreditScore(data: CreditData): number {
   
     // 5. Credit Mix (10%) — use sector + location
     let mixScore = 0;
-    if (data.employment.sector === "government") mixScore += 50;
+    if (data.employment.sector === "self-employed") mixScore += 50;
     else if (data.employment.sector === "public") mixScore += 35;
     else mixScore += 20;
   

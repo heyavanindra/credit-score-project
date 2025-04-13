@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from "cors"
 import creditScoreRoute from "./creditScoreRoute/creditScore.route";
 const PORT = 3000;
 const app = express();
 dotenv.config();
+app.use(cors())
 
 app.use(express.json());
 

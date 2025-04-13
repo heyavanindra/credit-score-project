@@ -3,7 +3,6 @@ import { z } from "zod";
 // zod schema for validating input data
 // if inputs are incorrect it will throw an error
 
-
 const creditCardUsageSchema = z.object({
   totalLimit: z
     .number({
@@ -80,7 +79,7 @@ const employment = z.object({
     })
     .min(0, "Employer reputation must be at least 0")
     .max(10, "Employer reputation must be at most 10"),
-  sector: z.enum(["private", "public", "government"], {
+  sector: z.enum(["private", "public", "self-employed"], {
     required_error: "Sector is required",
     invalid_type_error: "Sector is invalid",
   }),
@@ -104,9 +103,6 @@ const location = z.object({
     .max(10, "Urbanization score must be at most 10"),
 });
 
-
-
-
 export const inputValidationSchema = z.object({
   userId: z.string({
     required_error: "UserId Is Required",
@@ -117,5 +113,3 @@ export const inputValidationSchema = z.object({
   employment: employment,
   location: location,
 });
-
-

@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { inputValidationSchema } from "../validatonSchema/schema";
 import { calculateCreditScore, CreditData } from "../services/services";
+import userInfoModal from "../modals/modals";
 const creditScoreRoute = express.Router();
 
 creditScoreRoute.post("/", async (req: Request, res: Response) => {
@@ -11,9 +12,17 @@ creditScoreRoute.post("/", async (req: Request, res: Response) => {
     });
   }
   const creditCardData = parsedData.data;
-  const creditScore = calculateCreditScore(creditCardData as CreditData);
+  try {
+    const userInfo = new userInfoModal(creditCardData);
+    const user = await userInfo.save();
+    const creditScore = calculateCreditScore(creditCardData as CreditData);
 
-  res.json(creditScore).status(200);
+    res.json(creditScore).status(200);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
 });
 
 export default creditScoreRoute;
