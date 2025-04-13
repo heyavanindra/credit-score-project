@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { inputValidationSchema } from "../validatonSchema/schema";
 import { calculateCreditScore, CreditData } from "../services/services";
-import userInfoModal from "../modals/modals";
+import userInfoModal from "../models/models";
 const creditScoreRoute = express.Router();
 
 creditScoreRoute.post("/", async (req: Request, res: Response) => {
