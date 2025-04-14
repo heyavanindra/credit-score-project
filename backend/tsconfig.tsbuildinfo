@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/creditScoreRoute/creditScore.route.ts","./src/modals/modals.ts","./src/services/services.ts","./src/validatonSchema/schema.ts"],"version":"5.8.3"}
+{"root":["./src/index.ts","./src/creditScoreRoute/creditScore.route.ts","./src/models/models.ts","./src/services/services.ts","./src/validatonSchema/schema.ts"],"version":"5.8.3"}

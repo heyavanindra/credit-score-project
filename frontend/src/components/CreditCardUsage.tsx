@@ -23,7 +23,9 @@ const CreditCardUsage = ({
           <label className="text-sm font-medium text-gray-700">Total Limit</label>
           <input
             type="number"
-            {...register("creditCardUsage.totalLimit")}
+            {...register("creditCardUsage.totalLimit",{
+              valueAsNumber:true
+            })}
             className={`border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
               errors.creditCardUsage?.totalLimit ? "border-red-500" : "border-gray-300"
             }`}
@@ -38,7 +40,9 @@ const CreditCardUsage = ({
           <label className="text-sm font-medium text-gray-700">Current Usage</label>
           <input
             type="number"
-            {...register("creditCardUsage.currentUsage")}
+            {...register("creditCardUsage.currentUsage",{
+              valueAsNumber:true
+            })}
             className={`border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
               errors.creditCardUsage?.currentUsage ? "border-red-500" : "border-gray-300"
             }`}

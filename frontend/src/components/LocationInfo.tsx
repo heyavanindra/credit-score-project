@@ -34,7 +34,9 @@ const LocationInfo = ({ register, errors }: { register: UseFormRegister<inputTyp
         <input
           id="urbalizationScore"
           type="number"
-          {...register("location.urbalizationScore")}
+          {...register("location.urbalizationScore",{
+            valueAsNumber:true
+          })}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         {errors.location?.urbalizationScore && (

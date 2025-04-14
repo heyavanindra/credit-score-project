@@ -8,13 +8,13 @@ export function calculateCreditScore(data: CreditData): number {
     let score = 0;
   
     // 1. Payment History (35%)
-    const payments = data.creditCardUsageSchema.paymentHistory;
+    const payments = data.creditCardUsage.paymentHistory;
     const onTime = payments.filter(p => p.ontime).length;
     const paymentHistoryScore = (onTime / payments.length) * 100;
     const weightedPaymentScore = (paymentHistoryScore / 100) * 35;
   
     // 2. Amount Owed / Credit Utilization (30%)
-    const usageRatio = data.creditCardUsageSchema.currentUsage / data.creditCardUsageSchema.totalLimit;
+    const usageRatio = data.creditCardUsage.currentUsage / data.creditCardUsage.totalLimit;
     let utilizationScore = 0;
     if (usageRatio < 0.1) utilizationScore = 100;
     else if (usageRatio < 0.3) utilizationScore = 90;

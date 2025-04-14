@@ -5,13 +5,17 @@ import userInfoModal from "../models/models";
 const creditScoreRoute = express.Router();
 
 creditScoreRoute.post("/", async (req: Request, res: Response) => {
+ 
   const parsedData = inputValidationSchema.safeParse(req.body);
+  console.log(parsedData)
   if (!parsedData.success) {
+   
     res.status(400).json({
       error: parsedData.error.format(),
     });
   }
   const creditCardData = parsedData.data;
+  console.log(creditCardData)
   try {
     const userInfo = new userInfoModal(creditCardData);
     const user = await userInfo.save();
@@ -19,6 +23,7 @@ creditScoreRoute.post("/", async (req: Request, res: Response) => {
 
     res.json(creditScore).status(200);
   } catch (error) {
+    console.log(error)
     res.json({
       error: error,
     });

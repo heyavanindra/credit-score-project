@@ -23,7 +23,9 @@ const UpiHistory = ({
           <label className="text-sm font-medium text-gray-700">Monthly Transactions</label>
           <input
             type="number"
-            {...register("upiHistory.monthlyTransactions")}
+            {...register("upiHistory.monthlyTransactions",{
+              valueAsNumber:true
+            })}
             className={`border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.upiHistory?.monthlyTransactions ? "border-red-500" : "border-gray-300"
             }`}
@@ -38,7 +40,7 @@ const UpiHistory = ({
           <label className="text-sm font-medium text-gray-700">Average Transaction Value</label>
           <input
             type="number"
-            {...register("upiHistory.averageTransactionValue")}
+            {...register("upiHistory.averageTransactionValue",{valueAsNumber:true})}
             className={`border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.upiHistory?.averageTransactionValue ? "border-red-500" : "border-gray-300"
             }`}
@@ -70,7 +72,7 @@ const UpiHistory = ({
               <label className="text-sm text-gray-600">Volume</label>
               <input
                 type="text"
-                {...register(`upiHistory.lastSixMonthsTransactions.${index}.volume`)}
+                {...register(`upiHistory.lastSixMonthsTransactions.${index}.volume`,{valueAsNumber:true})}
                 placeholder="Number of transactions"
                 className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -80,7 +82,7 @@ const UpiHistory = ({
               <label className="text-sm text-gray-600">Value</label>
               <input
                 type="number"
-                {...register(`upiHistory.lastSixMonthsTransactions.${index}.value`)}
+                {...register(`upiHistory.lastSixMonthsTransactions.${index}.value`,{valueAsNumber:true})}
                 placeholder="Total value"
                 className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />

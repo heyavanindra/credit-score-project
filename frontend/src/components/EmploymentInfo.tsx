@@ -35,7 +35,9 @@ const EmploymentInfo = ({
         <input
           id="monthlyIncome"
           type="text"
-          {...register("employment.monthlyIncome")}
+          {...register("employment.monthlyIncome",{
+            valueAsNumber:true
+          })}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         {errors.employment?.monthlyIncome && (
@@ -50,7 +52,7 @@ const EmploymentInfo = ({
         <input
           id="employerReputation"
           type="number"
-          {...register("employment.employerReputation")}
+          {...register("employment.employerReputation",{valueAsNumber:true})}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         {errors.employment?.employerReputation && (
