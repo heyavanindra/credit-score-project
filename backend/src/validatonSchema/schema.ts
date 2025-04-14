@@ -108,7 +108,7 @@ export const inputValidationSchema = z.object({
     required_error: "UserId Is Required",
     invalid_type_error: "User Id Is invalid",
   }),
-  creditCardUsageSchema: creditCardUsageSchema,
+  creditCardUsage: creditCardUsageSchema,
   upiHistory: upiHistorySchema,
   employment: employment,
   location: location,
