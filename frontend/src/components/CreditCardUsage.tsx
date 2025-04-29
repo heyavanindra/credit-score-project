@@ -1,65 +1,87 @@
-import { Control, FieldErrors, useFieldArray, UseFormRegister } from "react-hook-form"
-import { inputType } from "../schema/inputschema"
+import {
+  Control,
+  FieldErrors,
+  useFieldArray,
+  UseFormRegister,
+} from "react-hook-form";
+import { inputType } from "../schema/inputschema";
 
 const CreditCardUsage = ({
   register,
   errors,
-  control
+  control,
 }: {
-  register: UseFormRegister<inputType>,
-  errors: FieldErrors<inputType>,
-  control: Control<inputType>
+  register: UseFormRegister<inputType>;
+  errors: FieldErrors<inputType>;
+  control: Control<inputType>;
 }) => {
   const { fields, remove, append } = useFieldArray<inputType>({
     name: "creditCardUsage.paymentHistory",
-    control
-  })
+    control,
+  });
 
   return (
     <div className="space-y-6">
       {/* Total & Current Limit */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700">Total Limit</label>
+          <label className="text-sm font-medium text-gray-700">
+            Total Limit
+          </label>
           <input
             type="number"
-            {...register("creditCardUsage.totalLimit",{
-              valueAsNumber:true
+            {...register("creditCardUsage.totalLimit", {
+              valueAsNumber: true,
             })}
             className={`border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-              errors.creditCardUsage?.totalLimit ? "border-red-500" : "border-gray-300"
+              errors.creditCardUsage?.totalLimit
+                ? "border-red-500"
+                : "border-gray-300"
             }`}
             placeholder="Enter total credit limit"
           />
           {errors.creditCardUsage?.totalLimit && (
-            <p className="text-sm text-red-600">{errors.creditCardUsage.totalLimit.message}</p>
+            <p className="text-sm text-red-600">
+              {errors.creditCardUsage.totalLimit.message}
+            </p>
           )}
         </div>
 
         <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700">Current Usage</label>
+          <label className="text-sm font-medium text-gray-700">
+            Current Usage
+          </label>
           <input
             type="number"
-            {...register("creditCardUsage.currentUsage",{
-              valueAsNumber:true
+            {...register("creditCardUsage.currentUsage", {
+              valueAsNumber: true,
             })}
             className={`border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-              errors.creditCardUsage?.currentUsage ? "border-red-500" : "border-gray-300"
+              errors.creditCardUsage?.currentUsage
+                ? "border-red-500"
+                : "border-gray-300"
             }`}
             placeholder="Enter current usage"
           />
           {errors.creditCardUsage?.currentUsage && (
-            <p className="text-sm text-red-600">{errors.creditCardUsage.currentUsage.message}</p>
+            <p className="text-sm text-red-600">
+              {errors.creditCardUsage.currentUsage.message}
+            </p>
           )}
         </div>
       </div>
 
       {/* Payment History */}
       <div className="space-y-4">
-        <label className="block text-sm font-medium text-gray-700">Payment History</label>
+        <label className="block text-sm font-medium text-gray-700">
+          Payment History
+        </label>
 
         {fields.map((field, index) => (
-          <div key={field.id} className="grid grid-cols-1 md:grid-cols-3 items-center gap-3 bg-gray-50 p-4 rounded-lg border">
+          <div
+            key={field.id}
+            className="grid grid-cols-1 md:grid-cols-3 items-center gap-3 bg-gray-50 p-4 rounded-lg border"
+          >
             <input
               type="text"
               {...register(`creditCardUsage.paymentHistory.${index}.month`)}
@@ -95,7 +117,7 @@ const CreditCardUsage = ({
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CreditCardUsage
+export default CreditCardUsage;

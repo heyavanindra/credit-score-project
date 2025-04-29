@@ -94,7 +94,7 @@ const location = z.object({
     required_error: "Tier is required",
     invalid_type_error: "Tier is invalid",
   }),
-  urbalizationScore: z
+  urbanizationScore: z
     .number({
       required_error: "Urbanization score is required",
       invalid_type_error: "Urbanization score is invalid",
@@ -103,13 +103,17 @@ const location = z.object({
     .max(10, "Urbanization score must be at most 10"),
 });
 
+export const inputFieldSchema = z.object({
+  creditCardUsage: creditCardUsageSchema,
+  upiHistory: upiHistorySchema,
+  employment: employment,
+  location: location,
+});
+
 export const inputValidationSchema = z.object({
   userId: z.string({
     required_error: "UserId Is Required",
     invalid_type_error: "User Id Is invalid",
   }),
-  creditCardUsage: creditCardUsageSchema,
-  upiHistory: upiHistorySchema,
-  employment: employment,
-  location: location,
+  data:inputFieldSchema
 });

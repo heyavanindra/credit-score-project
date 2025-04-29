@@ -1,10 +1,11 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 import dotenv from "dotenv";
+import { number } from "zod";
 dotenv.config();
 mongoose.connect(process.env.MONGO_URI!);
 
-const userInfoSchema = new mongoose.Schema({
-  userId: { type: String, require: true },
+
+const userInfoSchema= new mongoose.Schema({                                                                                                                                                                                                                        
   creditCardUsage: {
     totalLimit: Number,
     currentUsage: Number,
@@ -47,8 +48,15 @@ const userInfoSchema = new mongoose.Schema({
     tier: { type: String, enum: ["tier1", "tier2", "tier3"] },
     urbanizationScore: Number,
   },
+  creditScore:{type:Number}
+});
+const userSchema = new mongoose.Schema({
+  userId: { type: String, require: true ,unique:true },
+  data:[userInfoSchema],
 });
 
-const userInfoModal = mongoose.model("UserInfo", userInfoSchema);
 
-export default userInfoModal;
+
+export const usermodel = mongoose.model("user",userSchema)
+
+export const userInfoModel = mongoose.model("userInfo",userInfoSchema)
